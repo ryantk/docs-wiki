@@ -5,15 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user          = User.new
-    @user.email    = user_params.fetch(:email)
-    @user.username = user_params.fetch(:username)
-    @user.password = user_params.fetch(:password)
-
-    unless user_params.fetch(:password) == user_params.fetch(:password_confirmation)
-      flash.now[:error] = 'These passwords do not match!'
-      render :new and return
-    end
+    @user = User.new(user_params)
 
     if @user.save
       redirect_to articles_path

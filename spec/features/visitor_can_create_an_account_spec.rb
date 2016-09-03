@@ -11,11 +11,9 @@ feature 'Visitor can create an account' do
     click_button 'Register'
 
     users = User.where(username: 'test123')
-
     expect(users.count).to eq(1)
 
     user = users.first
-
     expect(user.email).to eq('test@user.com')
   end
 
