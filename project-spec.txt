@@ -1,0 +1,43 @@
+Ruby Mini Project
+
+Introduction
+
+This project should be straightforward to get the basics functioning. Feel free to embellish the areas of ruby development that you like and are most familiar with. Show us what you can do.
+
+Criteria
+
+The project should be achievable within a day's programming, but you could spend more time on it if you wish.
+
+You can submit the project source code via Github.
+
+Any instructions / documentation required to run the project should be available within the project 
+
+Bonus points for publishing the project to heroku. 
+Bonus points for attention to front end to improve the user experience. 
+
+Requirements
+
+The project should consist of a rails application and optionally custom gems if you find a reasonable need to do so.
+The project should have unit tests covering at least the most risky areas of code and they should all be passing.
+The project have at least a basic style of appearance.
+
+Project summary
+
+We need a basic Wiki system for our intranet.
+The wiki will have multiple users.
+The wiki will be used to store internal documentation and code snippets in a central place for other team members to read.
+The wiki needs to allow for new users to create logins, and for existing users to login and add and maintain their existing articles.
+
+User Stories
+
+A visitor can create an account
+A visitor can view an index of articles
+A visitor can search articles by title
+A visitor can view an article with some formatting
+A visitor can login with appropriate details and become an authenticated visitor
+An authenticated visitor can create an article
+An authenticated visitor can mark a section of copy as code (js/ruby/java/c++ etc) to be
+displayed and styled appropriately when viewed.
+An authenticated visitor can view a list of articles they authored
+An authenticated visitor can modify an existing article they have authored
+An authenticated visitor can log out
