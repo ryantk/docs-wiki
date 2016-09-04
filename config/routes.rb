@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resource :users
   resources :articles
+  resource :user_sessions
 
   get 'register', to: 'users#new', as: :registration
+  get 'log-in', to: 'user_sessions#new', as: :log_in
 
 end

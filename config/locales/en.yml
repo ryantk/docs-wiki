@@ -20,3 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  authentication:
+    success: 'You have logged in successfully'
+    failure:
+      no_such_user_with_username: 'Could not find user with username %{username}'
+      incorrect_password: 'Your password is incorrect'
+      missing_data: 'Please enter both Username and Password'

@@ -16,7 +16,7 @@
     <% end %>
   <% end %>
 
-  <% if flash[:info].present? %>
-    <%= content_tag :div, flash[:info], class: "alert alert-info" %>
+  <% flash.to_hash.except(:alert).each do |type, message| %>
+    <%= content_tag :div, message, class: "alert alert-#{type}" %>
   <% end %>
 </div>
