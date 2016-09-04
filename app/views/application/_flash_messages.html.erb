@@ -1,0 +1,22 @@
+<div>
+  <% if flash[:alert].present? %>
+    <%= content_tag :div, nil, class: "alert alert-danger" do %>
+
+      <p><%= flash[:alert] %></p>
+
+      <%# keep the flash and errors together %>
+
+      <% if errors.any? %>
+        <ul>
+          <% errors.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% if flash[:info].present? %>
+    <%= content_tag :div, flash[:info], class: "alert alert-info" %>
+  <% end %>
+</div>

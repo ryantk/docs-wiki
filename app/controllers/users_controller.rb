@@ -8,9 +8,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      sign_in_user(@user)
       redirect_to articles_path
     else
-      flash.now[:error] = 'Failed to register!'
+      flash.now[:alert] = "Failed to register!"
       render :new
     end
   end

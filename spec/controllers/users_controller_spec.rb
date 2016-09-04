@@ -25,6 +25,10 @@ RSpec.describe UsersController, type: :controller do
       it 'redirects you to the list of articles' do
         expect(response).to redirect_to(articles_path)
       end
+
+      it 'logs you into the system by default' do
+        expect(controller.user_signed_in?).to be(true)
+      end
     end
 
     context 'with invalid data' do
@@ -46,7 +50,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'shows a message to the user' do
-        expect(flash[:error]).to be_present
+        expect(flash[:alert]).to be_present
       end
     end
 
