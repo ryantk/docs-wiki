@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe ApplicationController, type: :controller do
 
   describe '#user_signed_in?' do
-    it 'returns true if current_user is present' do
-      controller.stub(:current_user) { anything }
+    it 'returns true if current_user is not a guest user' do
+      controller.stub(:current_user) { double(is_guest?: false) }
       expect(controller.user_signed_in?).to be(true)
     end
 
-    it 'returns false if current_user is nil' do
-      controller.stub(:current_user) { nil }
+    it 'returns false if current_user is a guest user' do
+      controller.stub(:current_user) { double(is_guest?: true) }
       expect(controller.user_signed_in?).to be(false)
     end
   end
@@ -34,11 +34,6 @@ RSpec.describe ApplicationController, type: :controller do
       controller.sign_out_user
       expect(session[:current_user_id]).not_to be_present
     end
-
-    it 'sets the current_user to nil' do
-      controller.sign_out_user
-      expect(controller.current_user).to be(nil)
-    end
   end
 
   describe '#current_user' do
@@ -52,11 +47,10 @@ RSpec.describe ApplicationController, type: :controller do
       expect(controller.current_user).to eq(user)
     end
 
-    it 'returns nil if there is no User to be found' do
+    it 'returns Guest user if there is no User to be found' do
       user_id = '123'
       session[:current_user_id] = user_id
-
-      expect(controller.current_user).to eq(nil)
+      expect(controller.current_user).to be_a_kind_of(GuestUser)
     end
   end
 

@@ -4,13 +4,12 @@ class ApplicationController < ActionController::Base
 
 
   def user_signed_in?
-    current_user.present?
+    !current_user.is_guest?
   end
 
   def current_user
-    @current_user ||= if session[:current_user_id].present?
-      User.find_by(id: session[:current_user_id])
-    end
+    @current_user ||= User.find_by(id: session[:current_user_id])
+    @current_user ||= GuestUser.new
   end
 
   def sign_in_user(user)
