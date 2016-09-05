@@ -5,7 +5,7 @@
 <% if @articles.any? %>
   <div class="list-group">
     <% @articles.each do |article| %>
-      <%= link_to article, class: 'list-group-item' do %>
+      <%= link_to article, class: 'list-group-item article' do %>
         <h4 class="list-group-item-heading"><%= article.title %></h4>
         <p class="list-group-item-text"><%= truncate(article.body, length: 35) %></p>
       <% end %>
