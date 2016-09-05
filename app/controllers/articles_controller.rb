@@ -12,6 +12,10 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def show
+    @article = Article.find(params[:id])
+  end
+
   def my_articles
     redirect_to root_path and return unless user_signed_in?
     @articles = current_user.articles

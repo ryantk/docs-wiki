@@ -32,6 +32,17 @@ RSpec.describe ArticlesController, type: :controller do
     end
   end
 
+  describe 'GET #show' do
+    it 'renders the article for the given id' do
+      user = User.create(username: 'author1', password: 'not-important')
+      article = Article.create(title: 'title', body: 'body', author: user)
+
+      get :show, id: article.id
+
+      expect(assigns(:article)).to eq(article)
+    end
+  end
+
   describe "GET #index" do
     it "returns http success" do
       get :index

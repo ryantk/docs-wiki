@@ -14,7 +14,6 @@
     <% @articles.each do |article| %>
       <%= link_to article, class: 'list-group-item article' do %>
         <h4 class="list-group-item-heading"><%= article.title %></h4>
-        <p class="list-group-item-text"><%= truncate(article.body, length: 35) %></p>
         <p><small>by <span class="author"><%= article.author_name %></span></small></p>
       <% end %>
     <% end %>

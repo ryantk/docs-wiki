@@ -44,7 +44,7 @@ User Stories
 
 UX Tidy up
 
-[ ] When viewing 'my articles' have link back to all articles
+[x] When viewing 'my articles' have link back to all articles
 [ ] Pagination of articles
 [ ] Make articles appear prettier
 [ ] Message to confirm when you have logged in
