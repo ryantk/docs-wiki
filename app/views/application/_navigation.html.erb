@@ -34,7 +34,9 @@
           </a>
         </li>
 
-        <% unless user_signed_in? %>
+        <% if user_signed_in? %>
+          <li><%= link_to 'Log Out', log_out_path %></li>
+        <% else %>
           <li><%= link_to 'Register', registration_path %></li>
           <li><%= link_to 'Log In', log_in_path %></li>
         <% end %>

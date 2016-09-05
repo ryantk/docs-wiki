@@ -5,6 +5,7 @@
       <p><%= flash[:alert] %></p>
 
       <%# keep the flash and errors together %>
+      <% errors ||= [] %><%# optional parameter %>
 
       <% if errors.any? %>
         <ul>

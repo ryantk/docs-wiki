@@ -9,5 +9,6 @@ Rails.application.routes.draw do
 
   get 'register', to: 'users#new', as: :registration
   get 'log-in', to: 'user_sessions#new', as: :log_in
+  get 'log-out', to: 'user_sessions#destroy', as: :log_out
 
 end
