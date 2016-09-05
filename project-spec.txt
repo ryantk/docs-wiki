@@ -33,7 +33,7 @@ User Stories
 [x] A visitor can create an account
 [x] A visitor can view an index of articles
 [x] A visitor can search articles by title
-[ ] A visitor can view an article with some formatting
+[x] A visitor can view an article with some formatting
 [x] A visitor can login with appropriate details and become an authenticated visitor
 [x] An authenticated visitor can create an article
 [ ] An authenticated visitor can mark a section of copy as code (js/ruby/java/c++ etc) to be
