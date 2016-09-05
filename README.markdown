@@ -1,5 +1,7 @@
 # docs-wiki
 
+[![Build Status](https://semaphoreci.com/api/v1/ryantk/docs-wiki/branches/master/badge.svg)](https://semaphoreci.com/ryantk/docs-wiki)
+
 ### Installation
 
 #### Install Postgres
