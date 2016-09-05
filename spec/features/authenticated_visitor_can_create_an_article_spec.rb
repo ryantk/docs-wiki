@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-feature 'Visitor can create an article' do
+feature 'Authenticated Visitor can create an article' do
   
-  scenario 'Vistor authoring Article has it saved against their User' do
+  scenario 'Authenticated Vistor authoring Article has it saved against their User' do
     article_title = 'My First Article'
     article_body = <<-ARTICLE
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

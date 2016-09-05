@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def new
-    redirect_to root_path unless user_signed_in?
+    redirect_to root_path and return unless user_signed_in?
     @article = Article.new
   end
 
@@ -10,6 +10,13 @@ class ArticlesController < ApplicationController
     else
       @articles = Article.all
     end
+  end
+
+  def my_articles
+    redirect_to root_path and return unless user_signed_in?
+    @articles = current_user.articles
+    @title = "#{current_user.username}'s Articles"
+    render :index
   end
 
   def create

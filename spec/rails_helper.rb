@@ -6,6 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
+require 'database_cleaner'
 require 'article_helper'
 require 'authentication_helper'
 
@@ -62,4 +63,10 @@ RSpec.configure do |config|
   # include custom helpers
   config.include AuthenticationHelper
   config.include ArticleHelper
+
+  # ensure database is clean for tests
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
 end

@@ -9,6 +9,29 @@ RSpec.describe ArticlesController, type: :controller do
     end
   end
 
+  describe 'GET #my_articles' do
+    it 'redirects to root_path if no user is logged in' do
+      get :my_articles
+      expect(response).to redirect_to(root_path)
+    end
+
+    it 'renders the same template as index' do
+      controller.sign_in_user(User.new)
+      get :my_articles
+      expect(response).to render_template(:index)
+    end
+
+    it 'renders all articles for the current user' do
+      user = User.new(username: 'topUser', password: 'password123')
+      3.times {|i| user.articles.build title: "Article #{i}", body: "Body of Article #{i}" }
+      controller.sign_in_user(user)
+
+      get :my_articles
+
+      expect(assigns(:articles)).to eq(user.articles)
+    end
+  end
+
   describe "GET #index" do
     it "returns http success" do
       get :index
