@@ -41,3 +41,12 @@ User Stories
 [x] An authenticated visitor can view a list of articles they authored
 [ ] An authenticated visitor can modify an existing article they have authored
 [x] An authenticated visitor can log out
+
+UX Tidy up
+
+[ ] When viewing 'my articles' have link back to all articles
+[ ] Pagination of articles
+[ ] Make articles appear prettier
+[ ] Message to confirm when you have logged in
+[ ] Page to change username, email and password
+[ ] Make use of turbolinks
