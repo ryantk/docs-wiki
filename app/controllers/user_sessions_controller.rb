@@ -23,6 +23,11 @@ class UserSessionsController < ApplicationController
     render :new
   end
 
+  def destroy
+    sign_out_user
+    redirect_to root_path, flash: { success: I18n.t('log_out.success') }
+  end
+
   private
 
   def auth_params

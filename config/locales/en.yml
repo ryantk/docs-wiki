@@ -26,3 +26,5 @@ en:
       no_such_user_with_username: 'Could not find user with username %{username}'
       incorrect_password: 'Your password is incorrect'
       missing_data: 'Please enter both Username and Password'
+  log_out:
+    success: 'You have logged out successfully'

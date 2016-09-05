@@ -2,6 +2,23 @@ require 'rails_helper'
 
 RSpec.describe UserSessionsController, type: :controller do
 
+  describe 'GET #destroy' do
+    it 'signs out the user' do
+      user = instance_double('User', is_guest?: false, id: '123')
+      controller.sign_in_user(user)
+
+      get :destroy
+
+      expect(controller.user_signed_in?).to be(false)
+    end
+
+    it 'redirect_to root path with message' do
+      get :destroy
+      expect(response).to redirect_to(root_path)
+      expect(flash[:success]).to eq(I18n.t('log_out.success'))
+    end
+  end
+
   describe 'POST #create' do
 
     context 'with invalid data' do
