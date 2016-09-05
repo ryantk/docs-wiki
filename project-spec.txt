@@ -38,6 +38,6 @@ User Stories
 [x] An authenticated visitor can create an article
 [ ] An authenticated visitor can mark a section of copy as code (js/ruby/java/c++ etc) to be
     displayed and styled appropriately when viewed.
-[ ] An authenticated visitor can view a list of articles they authored
+[x] An authenticated visitor can view a list of articles they authored
 [ ] An authenticated visitor can modify an existing article they have authored
 [x] An authenticated visitor can log out
