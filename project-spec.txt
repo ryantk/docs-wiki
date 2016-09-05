@@ -30,14 +30,14 @@ The wiki needs to allow for new users to create logins, and for existing users t
 
 User Stories
 
-A visitor can create an account
-A visitor can view an index of articles
-A visitor can search articles by title
-A visitor can view an article with some formatting
-A visitor can login with appropriate details and become an authenticated visitor
-An authenticated visitor can create an article
-An authenticated visitor can mark a section of copy as code (js/ruby/java/c++ etc) to be
-displayed and styled appropriately when viewed.
-An authenticated visitor can view a list of articles they authored
-An authenticated visitor can modify an existing article they have authored
-An authenticated visitor can log out
+[x] A visitor can create an account
+[x] A visitor can view an index of articles
+[ ] A visitor can search articles by title
+[ ] A visitor can view an article with some formatting
+[x] A visitor can login with appropriate details and become an authenticated visitor
+[ ] An authenticated visitor can create an article
+[ ] An authenticated visitor can mark a section of copy as code (js/ruby/java/c++ etc) to be
+    displayed and styled appropriately when viewed.
+[ ] An authenticated visitor can view a list of articles they authored
+[ ] An authenticated visitor can modify an existing article they have authored
+[ ] An authenticated visitor can log out
