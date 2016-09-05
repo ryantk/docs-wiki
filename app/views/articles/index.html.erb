@@ -1,4 +1,16 @@
-<h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
+<h1>All Articles</h1>
 
 <%= render partial: 'flash_messages' %>
+
+<% if @articles.any? %>
+  <div class="list-group">
+    <% @articles.each do |article| %>
+      <%= link_to article, class: 'list-group-item' do %>
+        <h4 class="list-group-item-heading"><%= article.title %></h4>
+        <p class="list-group-item-text"><%= truncate(article.body, length: 35) %></p>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <p>No Articles to display :(</p>
+<% end %>
