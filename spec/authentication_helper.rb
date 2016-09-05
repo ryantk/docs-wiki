@@ -11,4 +11,15 @@ module AuthenticationHelper
     click_link 'Log Out'
   end
 
+  def generate_test_user
+    username = 'test123'
+    password = 'super-strong-password'
+    @user = User.create!(username: username, password: password)
+  end
+
+  def log_in_user
+    raise 'Generate Test User first!' unless @user.present?
+    log_in_with(username: @user.username, password: @user.password)
+  end
+
 end

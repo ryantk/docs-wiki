@@ -28,3 +28,6 @@ en:
       missing_data: 'Please enter both Username and Password'
   log_out:
     success: 'You have logged out successfully'
+  articles:
+    create:
+      failure: 'Could not publish new article'

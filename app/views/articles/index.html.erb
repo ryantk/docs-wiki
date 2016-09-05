@@ -1,5 +1,9 @@
 <h1>All Articles</h1>
 
+<% if user_signed_in? %>
+  <p><%= link_to 'New Article', new_article_path, class: 'btn btn-primary' %></p>
+<% end %>
+
 <%= render partial: 'flash_messages' %>
 
 <% if @articles.any? %>
@@ -8,6 +12,7 @@
       <%= link_to article, class: 'list-group-item article' do %>
         <h4 class="list-group-item-heading"><%= article.title %></h4>
         <p class="list-group-item-text"><%= truncate(article.body, length: 35) %></p>
+        <p><small>by <span class="author"><%= article.author_name %></span></small></p>
       <% end %>
     <% end %>
   </div>
