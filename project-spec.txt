@@ -32,7 +32,7 @@ User Stories
 
 [x] A visitor can create an account
 [x] A visitor can view an index of articles
-[ ] A visitor can search articles by title
+[x] A visitor can search articles by title
 [ ] A visitor can view an article with some formatting
 [x] A visitor can login with appropriate details and become an authenticated visitor
 [ ] An authenticated visitor can create an article
@@ -40,4 +40,4 @@ User Stories
     displayed and styled appropriately when viewed.
 [ ] An authenticated visitor can view a list of articles they authored
 [ ] An authenticated visitor can modify an existing article they have authored
-[ ] An authenticated visitor can log out
+[x] An authenticated visitor can log out
