@@ -14,7 +14,8 @@ module AuthenticationHelper
   def generate_test_user
     username = 'test123'
     password = 'super-strong-password'
-    @user = User.create!(username: username, password: password)
+    email    = 'my@email.com'
+    @user = User.create!(username: username, password: password, email: email)
   end
 
   def log_in_user
