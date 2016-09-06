@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
       flash.now[:alert] = I18n.t('authentication.failure.no_such_user_with_username', username: auth_params[:username])
       render :new and return
     end
-
+  
     if @user.authenticate(auth_params[:password])
       sign_in_user(@user)
       redirect_to articles_path, flash: { success: I18n.t('authentication.success') }

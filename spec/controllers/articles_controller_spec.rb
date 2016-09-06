@@ -63,6 +63,12 @@ RSpec.describe ArticlesController, type: :controller do
 
       expect(assigns(:article)).to eq(article)
     end
+
+    it 'redirects to index if article could not be found' do
+      get :show, id: 1
+      expect(response).to redirect_to(articles_path)
+      expect(flash[:alert]).to eq(I18n.t('articles.show.could_not_be_found'))
+    end
   end
 
   describe "GET #index" do
@@ -92,49 +98,52 @@ RSpec.describe ArticlesController, type: :controller do
   end
 
   describe 'POST #create' do
-    context 'with valid data' do
+    context 'logged in user' do
       before :each do
-        @data = {
-          article: {
-            title: 'My First Article',
-            body: 'A long passage of text'
+        @user = User.create(username: 'author1', password: 'not-important')
+        controller.sign_in_user(@user)
+      end
+
+      context 'with valid data' do
+        before :each do
+          @data = {
+            article: {
+              title: 'My First Article',
+              body: 'A long passage of text'
+            }
           }
-        }
-        
+        end
+
+        it 'creates the Article object' do
+          post :create, @data
+
+          expect(Article.count).to eq(1)
+          article = Article.first
+          expect(article.title).to eq(@data[:article][:title])
+          expect(article.body).to eq(@data[:article][:body])
+        end
+
+        it 'links the article to the currently logged in User' do
+          post :create, @data
+
+          article = Article.first
+          expect(article.author).to eq(@user)
+        end
       end
 
-      it 'creates the Article object' do
-        post :create, @data
-
-        expect(Article.count).to eq(1)
-        article = Article.first
-        expect(article.title).to eq(@data[:article][:title])
-        expect(article.body).to eq(@data[:article][:body])
-      end
-
-      it 'links the article to the currently logged in User' do
-        user = User.create(username: 'author1', password: 'not-important')
-        controller.sign_in_user(user)
-
-        post :create, @data
-
-        article = Article.first
-        expect(article.author).to eq(user)
-      end
-    end
-
-    context 'with invalid data' do
-      it 'renders :new with an error message' do
-        post :create # no data
-        expect(response).to render_template(:new)
-        expect(flash[:alert]).to eq(I18n.t('articles.create.failure'))
+      context 'with invalid data' do
+        it 'renders :new with an error message' do
+          post :create # no data
+          expect(response).to render_template(:new)
+          expect(flash[:alert]).to eq(I18n.t('articles.create.failure'))
+        end
       end
     end
   end
 
   describe 'POST #update' do
     it 'redirects to root_path if no user is logged in' do
-      get :new
+      post :update, {id: 1}
       expect(response).to redirect_to(root_path)
     end
 

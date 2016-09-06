@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
+  before_action :require_login, except: [:index, :show]
+
   def new
-    redirect_to root_path and return unless user_signed_in?
     @article = Article.new
   end
 
@@ -14,10 +15,13 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    
+  rescue
+    flash[:alert] = I18n.t('articles.show.could_not_be_found')
+    redirect_to articles_path
   end
 
   def my_articles
-    redirect_to root_path and return unless user_signed_in?
     @articles = current_user.articles
     @title = "#{current_user.username}'s Articles"
     render :index
@@ -25,14 +29,10 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.build(article_params)
+    @article.save!
 
-    if @article.save
-      flash[:success] = I18n.t('articles.create.success')
-      redirect_to article_path(@article)
-    else
-      flash.now[:alert] = I18n.t('articles.create.failure')
-      render :new
-    end
+    flash[:success] = I18n.t('articles.create.success')
+    redirect_to article_path(@article)
 
   rescue
     flash.now[:alert] = I18n.t('articles.create.failure')
@@ -40,15 +40,16 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    redirect_to root_path and return unless user_signed_in?
     @article = Article.find(params[:id])
     redirect_to article_path(@article) and return unless @article.author == current_user
   end
 
   def update
-    redirect_to root_path and return unless user_signed_in?
     @article = Article.find(params[:id])
-    redirect_to article_path(@article) and return unless @article.author == current_user
+
+    unless @article.author == current_user
+      redirect_to article_path(@article) and return
+    end
 
     if @article.update_attributes(article_params)
       flash[:success] = I18n.t('articles.update.success')

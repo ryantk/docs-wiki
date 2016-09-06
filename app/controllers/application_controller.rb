@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   helper_method :user_signed_in?, :current_user
 
 
+  def require_login
+    redirect_to root_path unless user_signed_in?
+  end
+
   def user_signed_in?
     !current_user.is_guest?
   end

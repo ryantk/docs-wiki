@@ -35,3 +35,5 @@ en:
     update:
       success: 'Successfully updated your article'
       failure: 'Failed to update your article'
+    show:
+      could_not_be_found: 'Could not find article to show'
