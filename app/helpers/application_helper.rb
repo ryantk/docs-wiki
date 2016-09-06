@@ -17,4 +17,13 @@ module ApplicationHelper
     "#{greetings}, #{name}"
   end
 
+  def gravatar(opts = {})
+    email   = opts.fetch(:email)
+    size    = opts.fetch(:size, 20)
+    default = opts.fetch(:default, 'monsterid')
+    hash    = Digest::MD5.hexdigest(email)
+
+    "https://www.gravatar.com/avatar/#{hash}?s=#{size}&d=#{default}"
+  end
+
 end

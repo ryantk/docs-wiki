@@ -37,8 +37,13 @@
 
         <li>
           <a href="#">
+            <% if user_signed_in? %>
+              <%= image_tag gravatar(email: current_user.email, size: 25) %>
+            <% end %>
             <%= greeting current_user.username %>
           </a>
+
+
         </li>
 
         <% if user_signed_in? %>
