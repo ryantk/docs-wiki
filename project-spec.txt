@@ -46,8 +46,8 @@ UX Tidy up
 
 [x] When viewing 'my articles' have link back to all articles
 [ ] Pagination of articles
-[ ] Make articles appear prettier
-[ ] Message to confirm when you have logged in
+[x] Make articles appear prettier
+[x] Message to confirm when you have logged in
 [ ] Page to change username, email and password
 [ ] Make use of turbolinks
 

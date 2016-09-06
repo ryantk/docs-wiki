@@ -2,34 +2,37 @@
 
 <%= render partial: 'flash_messages' %>
 
-<%= form_tag({ action: :create }, { class: 'form-horizontal' }) do %>
-  
-  <div class="form-group">
-    <%= label_tag :username, nil, class: 'col-sm-2 control-label' %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= form_tag({ action: :create }, { class: 'form-horizontal' }) do %>
+      <div class="form-group">
+        <%= label_tag :username, nil, class: 'col-sm-2 control-label' %>
 
-    <div class="col-sm-10">
-      <%= email_field_tag :username, nil, class: 'form-control', autofocus: true %>
-    </div>
+        <div class="col-sm-10">
+          <%= email_field_tag :username, nil, class: 'form-control', autofocus: true %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :password, nil, class: 'col-sm-2 control-label' %>
+
+        <div class="col-sm-10">
+          <%= password_field_tag :password, nil, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <%= submit_tag "Log In", class: 'btn btn-default' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <p>Not registered? <%= link_to 'Register here', registration_path %>.</p>
+        </div>
+      </div>
+
+    <% end %>
   </div>
-
-  <div class="form-group">
-    <%= label_tag :password, nil, class: 'col-sm-2 control-label' %>
-
-    <div class="col-sm-10">
-      <%= password_field_tag :password, nil, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= submit_tag "Log In", class: 'btn btn-default' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <p>Not registered? <%= link_to 'Register here', registration_path %>.</p>
-    </div>
-  </div>
-
-<% end %>
+</div>

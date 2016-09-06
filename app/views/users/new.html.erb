@@ -2,44 +2,48 @@
 
 <%= render partial: 'flash_messages', locals: { errors: @user.errors.full_messages } %>
 
-<%= form_for(@user, html: { class: 'form-horizontal' }) do |f| %>
-  
-  <div class="form-group">
-    <%= f.label :email, nil, class: 'col-sm-2 control-label' %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= form_for(@user, html: { class: 'form-horizontal' }) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :email, nil, class: 'col-sm-2 control-label' %>
 
-    <div class="col-sm-10">
-      <%= f.email_field :email, class: 'form-control' %>
-    </div>
+        <div class="col-sm-10">
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :username, nil, class: 'col-sm-2 control-label' %>
+
+        <div class="col-sm-10">
+          <%= f.email_field :username, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, nil, class: 'col-sm-2 control-label' %>
+
+        <div class="col-sm-10">
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Password Confirmation", class: 'col-sm-2 control-label' %>
+
+        <div class="col-sm-10">
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <%= f.submit "Register", class: 'btn btn-default' %>
+        </div>
+      </div>
+
+    <% end %>
   </div>
-
-  <div class="form-group">
-    <%= f.label :username, nil, class: 'col-sm-2 control-label' %>
-
-    <div class="col-sm-10">
-      <%= f.email_field :username, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password, nil, class: 'col-sm-2 control-label' %>
-
-    <div class="col-sm-10">
-      <%= f.password_field :password, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password_confirmation, "Password Confirmation", class: 'col-sm-2 control-label' %>
-
-    <div class="col-sm-10">
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit "Register", class: 'btn btn-default' %>
-    </div>
-  </div>
-
-<% end %>
+</div>

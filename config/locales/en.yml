@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  greetings: 'Howdy'
   authentication:
     success: 'You have logged in successfully'
     failure:
