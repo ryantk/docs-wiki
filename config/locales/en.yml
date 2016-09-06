@@ -30,4 +30,8 @@ en:
     success: 'You have logged out successfully'
   articles:
     create:
+      success: 'Successfully published your article'
       failure: 'Could not publish new article'
+    update:
+      success: 'Successfully updated your article'
+      failure: 'Failed to update your article'

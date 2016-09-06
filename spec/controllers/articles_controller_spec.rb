@@ -9,6 +9,28 @@ RSpec.describe ArticlesController, type: :controller do
     end
   end
 
+  describe 'GET #edit' do
+    it 'redirects to root_path if no user is logged in' do
+      get :new
+      expect(response).to redirect_to(root_path)
+    end
+
+    context 'the Article is mine to edit' do
+      before :each do
+        @user = User.create(username: 'author1', password: 'not-important')
+        controller.sign_in_user(@user)
+      end
+
+      it 'assigns the article of the given id' do
+        article = Article.create(title: 'title', body: 'body', author: @user)
+
+        get :edit, id: article.id
+
+        expect(assigns :article).to eq(article)
+      end
+    end
+  end
+
   describe 'GET #my_articles' do
     it 'redirects to root_path if no user is logged in' do
       get :my_articles
@@ -108,6 +130,40 @@ RSpec.describe ArticlesController, type: :controller do
         expect(flash[:alert]).to eq(I18n.t('articles.create.failure'))
       end
     end
+  end
+
+  describe 'POST #update' do
+    it 'redirects to root_path if no user is logged in' do
+      get :new
+      expect(response).to redirect_to(root_path)
+    end
+
+    context 'Article is our own' do
+      context 'with valid data' do
+        before :each do
+          @user = User.create(username: 'author1', password: 'not-important')
+          controller.sign_in_user(@user)
+
+          @article = Article.create(title: 'Brand New Article', body: 'Superb', author: @user)
+          @data = {
+            article: {
+              title: 'Update My Article',
+              body: 'A long and edited passage of text'
+            },
+            id: @article.id
+          }
+        end
+
+        it 'edits the Article' do
+          post :update, @data
+          @article.reload
+
+          expect(@article.title).to eq(@data[:article][:title])
+          expect(@article.body).to eq(@data[:article][:body])
+        end
+      end
+    end
+    
   end
 
 end

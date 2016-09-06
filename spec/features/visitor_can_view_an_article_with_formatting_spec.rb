@@ -30,8 +30,6 @@ _this text is italic_
     # then I see the following detail of the article
     expect(page).to have_text(article.title)
 
-    puts page.html
-
     within('#article-body-formatted') do
       expect(page).to have_selector('h1', text: 'Title')
       expect(page).to have_selector('h2', text: 'Sub Title')

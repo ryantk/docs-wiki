@@ -2,6 +2,10 @@
 
 <hr>
 
+<p><%= link_to('Edit', edit_article_path(@article), class: 'btn btn-primary') %></p>
+
+<hr>
+
 <div id="article-body-formatted">
   <%= format_markdown @article.body %>
 </div>

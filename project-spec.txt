@@ -36,10 +36,10 @@ User Stories
 [x] A visitor can view an article with some formatting
 [x] A visitor can login with appropriate details and become an authenticated visitor
 [x] An authenticated visitor can create an article
-[ ] An authenticated visitor can mark a section of copy as code (js/ruby/java/c++ etc) to be
+[x] An authenticated visitor can mark a section of copy as code (js/ruby/java/c++ etc) to be
     displayed and styled appropriately when viewed.
 [x] An authenticated visitor can view a list of articles they authored
-[ ] An authenticated visitor can modify an existing article they have authored
+[x] An authenticated visitor can modify an existing article they have authored
 [x] An authenticated visitor can log out
 
 UX Tidy up
@@ -50,3 +50,7 @@ UX Tidy up
 [ ] Message to confirm when you have logged in
 [ ] Page to change username, email and password
 [ ] Make use of turbolinks
+
+Misc
+
+[ ] Code style clean up, seattle / non style?
