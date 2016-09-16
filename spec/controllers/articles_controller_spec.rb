@@ -44,7 +44,7 @@ RSpec.describe ArticlesController, type: :controller do
     end
 
     it 'renders all articles for the current user' do
-      user = User.new(username: 'topUser', password: 'password123')
+      user = User.create(username: 'topUser', password: 'password123')
       3.times {|i| user.articles.build title: "Article #{i}", body: "Body of Article #{i}" }
       controller.sign_in_user(user)
 
@@ -172,7 +172,7 @@ RSpec.describe ArticlesController, type: :controller do
         end
       end
     end
-    
+
   end
 
 end

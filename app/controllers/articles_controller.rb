@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    
+
   rescue
     flash[:alert] = I18n.t('articles.show.could_not_be_found')
     redirect_to articles_path
@@ -28,11 +28,15 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = current_user.articles.build(article_params)
-    @article.save!
+    @article = AuthorNewArticleContext.call(current_user, article_params)
 
-    flash[:success] = I18n.t('articles.create.success')
-    redirect_to article_path(@article)
+    if @article.present?
+      flash[:success] = I18n.t('articles.create.success')
+      redirect_to article_path(@article)
+    else
+      flash.now[:alert] = I18n.t('articles.create.failure')
+      render :new
+    end
 
   rescue
     flash.now[:alert] = I18n.t('articles.create.failure')
