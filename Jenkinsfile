@@ -8,12 +8,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'ruby -e "puts \'Build Stage\'"'
+        sh 'echo "Build"'
       }
     }
     stage('Test') {
       steps {
-        sh 'ruby -e "puts \'Test!\'"'
+        sh 'echo "Test"'
       }
     }
   }
